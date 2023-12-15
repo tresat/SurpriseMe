@@ -11,6 +11,8 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		CC09404E2B2CC0760033882B /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = CC09404D2B2CC0760033882B /* KMPNativeCoroutinesAsync */; };
+		CC0940502B2CC0760033882B /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = CC09404F2B2CC0760033882B /* KMPNativeCoroutinesCore */; };
 		FE6F1936C8F40F1CD5E850F9 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E3C183AE28B4320759E2EC1 /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +33,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC09404E2B2CC0760033882B /* KMPNativeCoroutinesAsync in Frameworks */,
 				FE6F1936C8F40F1CD5E850F9 /* Pods_iosApp.framework in Frameworks */,
+				CC0940502B2CC0760033882B /* KMPNativeCoroutinesCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +114,10 @@
 			dependencies = (
 			);
 			name = iosApp;
+			packageProductDependencies = (
+				CC09404D2B2CC0760033882B /* KMPNativeCoroutinesAsync */,
+				CC09404F2B2CC0760033882B /* KMPNativeCoroutinesCore */,
+			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -139,6 +147,9 @@
 				Base,
 			);
 			mainGroup = 7555FF72242A565900829871;
+			packageReferences = (
+				CC09404C2B2CC0760033882B /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
+			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -380,6 +391,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CC09404C2B2CC0760033882B /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CC09404D2B2CC0760033882B /* KMPNativeCoroutinesAsync */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC09404C2B2CC0760033882B /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesAsync;
+		};
+		CC09404F2B2CC0760033882B /* KMPNativeCoroutinesCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC09404C2B2CC0760033882B /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
+			productName = KMPNativeCoroutinesCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }
