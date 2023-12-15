@@ -3,24 +3,12 @@ import com.rickclephas.kmp.nativecoroutines.gradle.ExposedSeverity
 plugins {
     alias(libs.plugins.supriseMe.kotlinMultiplatformProject)
     alias(libs.plugins.kotlinCocoapods)
-    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.nativeCoroutines)
 }
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
-    }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
     cocoapods {
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
@@ -45,7 +33,8 @@ kotlin {
             implementation(libs.ktor.client.darwin)
         }
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation(projects.datamodel)
+
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.coroutines)
             implementation(libs.ktor.client.core)
@@ -55,18 +44,6 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
-    }
-}
-
-android {
-    namespace = "com.tomtresansky.surpriseme"
-    compileSdk = 34
-    defaultConfig {
-        minSdk = 31
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
     }
 }
 

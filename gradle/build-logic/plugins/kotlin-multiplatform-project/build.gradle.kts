@@ -1,27 +1,21 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     `kotlin-dsl`
 }
 
 group = "com.tomtresansky.surpriseme.buildlogic"
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+dependencies {
+    compileOnly(libs.android.gradlePlugin)
+    compileOnly(libs.kotlin.gradlePlugin)
+
+    implementation(project(":common"))
 }
 
-tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
-    }
-}
-
-gradlePlugin{
-    plugins{
-        register("kotlin-multiplatform-project"){
+gradlePlugin {
+    plugins {
+        register("kotlin-multiplatform-project") {
             id="com.tomtresansky.surpriseme.kotlin-multiplatform-project"
-            implementationClass="com.tomtresansky.surpriseme.buildlogic.KotlinMultiplatformProjectPlugin"
+            implementationClass="com.tomtresansky.surpriseme.buildlogic.kotlinmultiplatform.KotlinMultiplatformProjectPlugin"
         }
     }
 }
