@@ -39,3 +39,6 @@ kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = 
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 nativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "nativeCoroutines" }
+
+# Convention Plugins
+supriseMe-kotlinMultiplatformProject = { id = "com.tomtresansky.surpriseme.kotlin-multiplatform-project", version = "unspecified" }

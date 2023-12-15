@@ -1,5 +1,3 @@
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
 pluginManagement {
     repositories {
         google()
@@ -14,13 +12,21 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-
     @Suppress("UnstableApiUsage")
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+
+    versionCatalogs {
+        create("libs") {
+            from(files("../../gradle/libs.versions.toml"))
+        }
+    }
 }
 
-includeBuild("gradle/build-logic")
+rootProject.name = "build-logic"
 
-rootProject.name = "SurpriseMe"
-include(":androidApp")
-include(":shared")
+includePluginProject("kotlin-multiplatform-project")
+
+fun includePluginProject(name: String) {
+    include(name)
+    project(":$name").projectDir = file("plugins/$name")
+}
