@@ -17,6 +17,9 @@ ksp = "1.9.21-1.0.16"
 ktor = "2.3.6"
 nativeCoroutines = "1.0.0-ALPHA-19"
 
+# Plugins
+versions = "0.50.0"
+
 [libraries]
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
@@ -49,6 +52,7 @@ kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = 
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 nativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "nativeCoroutines" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 
 # Convention Plugins
-supriseMe-kotlinMultiplatformProject = { id = "com.tomtresansky.surpriseme.kotlin-multiplatform-project", version = "unspecified" }
+surpriseMe-kotlinMultiplatformProject = { id = "com.tomtresansky.surpriseme.kotlin-multiplatform-project", version = "unspecified" }

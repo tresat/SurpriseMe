@@ -1,3 +1,3 @@
 plugins {
-    alias(libs.plugins.supriseMe.kotlinMultiplatformProject)
+    alias(libs.plugins.surpriseMe.kotlinMultiplatformProject)
 }
