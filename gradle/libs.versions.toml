@@ -1,11 +1,12 @@
 [versions]
-# SDK and runtime target versions
+# SDK and runtime target versions (read dynamically from build logic)
 androidSdkVersion = "34"
 jvmVersion = "17"
 
 androidx-activityCompose = "1.8.2"
 androidx-lifecycle = "2.6.2"
 agp = "8.2.0"
+commons-text = "1.11.0"
 compose = "1.5.4"
 compose-compiler = "1.5.6"
 compose-material3 = "1.1.2"
@@ -20,6 +21,7 @@ nativeCoroutines = "1.0.0-ALPHA-19"
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }

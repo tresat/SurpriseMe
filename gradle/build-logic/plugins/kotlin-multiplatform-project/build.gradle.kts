@@ -9,6 +9,7 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
 
     implementation(project(":common"))
+    implementation(libs.commons.text)
 }
 
 gradlePlugin {

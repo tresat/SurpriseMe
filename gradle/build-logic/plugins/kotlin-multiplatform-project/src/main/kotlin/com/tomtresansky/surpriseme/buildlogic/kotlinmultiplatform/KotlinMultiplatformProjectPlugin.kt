@@ -5,21 +5,26 @@ import com.tomtresansky.surpriseme.buildlogic.common.libs
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.plugins.ExtensionAware
+import org.apache.commons.text.WordUtils
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.plugin.cocoapods.CocoapodsExtension
 
 abstract class KotlinMultiplatformProjectPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         with(project) {
-            val androidSdkVersion = libs().findVersion("androidSdkVersion").get().toString().toInt()
-            val jvmVersion = libs().findVersion("jvmVersion").get().toString()
-
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.multiplatform")
+                apply("org.jetbrains.kotlin.native.cocoapods")
                 apply("com.android.library")
             }
 
+            val jvmVersion = libs().findVersion("jvmVersion").get().toString()
+
             extensions.configure<LibraryExtension> {
+                val androidSdkVersion = libs().findVersion("androidSdkVersion").get().toString().toInt()
+
                 namespace = "com.tomtresansky.surpriseme.shared.${project.name}"
                 compileSdk = androidSdkVersion
 
@@ -43,6 +48,20 @@ abstract class KotlinMultiplatformProjectPlugin : Plugin<Project> {
                 iosX64()
                 iosArm64()
                 iosSimulatorArm64()
+
+                (this as ExtensionAware).extensions.configure<CocoapodsExtension> {
+                    val capitalizedProjectName = WordUtils.capitalizeFully(project.name)
+
+                    summary = "Some description for the $capitalizedProjectName Module"
+                    homepage = "Link to the $capitalizedProjectName Module homepage"
+                    version = "1.0"
+                    ios.deploymentTarget = "16.0"
+                    podfile = project.file("../iosApp/Podfile")
+                    framework {
+                        baseName = project.name
+                        isStatic = true
+                    }
+                }
             }
         }
     }
