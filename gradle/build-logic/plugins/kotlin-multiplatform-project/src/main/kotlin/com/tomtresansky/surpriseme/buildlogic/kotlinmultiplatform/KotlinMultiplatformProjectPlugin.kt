@@ -49,6 +49,12 @@ abstract class KotlinMultiplatformProjectPlugin : Plugin<Project> {
                 iosArm64()
                 iosSimulatorArm64()
 
+                sourceSets.commonMain.dependencies {
+                    implementation(dependencies.platform("com.tomtresansky.surpriseme.buildlogic:common-platform"))
+
+                    implementation(libs().findLibrary("kotlin-stdlib").get())
+                }
+
                 (this as ExtensionAware).extensions.configure<CocoapodsExtension> {
                     val capitalizedProjectName = WordUtils.capitalizeFully(project.name)
 

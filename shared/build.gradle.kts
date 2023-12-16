@@ -2,6 +2,7 @@ import com.rickclephas.kmp.nativecoroutines.gradle.ExposedSeverity
 
 plugins {
     alias(libs.plugins.surpriseMe.kotlinMultiplatformProject)
+
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.nativeCoroutines)

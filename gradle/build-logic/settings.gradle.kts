@@ -25,9 +25,13 @@ dependencyResolutionManagement {
 rootProject.name = "build-logic"
 
 include(":common")
+includePlatformProject("common-platform")
 includePluginProject("kotlin-multiplatform-project")
 
-fun includePluginProject(name: String) {
+fun includePluginProject(name: String) = includeProject(name, file("plugins"))
+fun includePlatformProject(name: String) = includeProject(name, file("platforms"))
+
+fun includeProject(name: String, subDir: File) {
     include(name)
-    project(":$name").projectDir = file("plugins/$name")
+    project(":$name").projectDir = File(subDir, name)
 }
