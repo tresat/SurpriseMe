@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import org.jetbrains.kotlin.gradle.plugin.extraProperties
 
 plugins {
     // These plugins must be defined at root project, to get the same version throughout and
@@ -12,6 +13,7 @@ plugins {
     // Actual top-level plugins
     alias(libs.plugins.versions)
     alias(libs.plugins.dependencyAnalysis)
+    alias(libs.plugins.moduleDependencyGraph)
 }
 
 description = """Creates fuzzy alerts that are a welcome surprise!"""
@@ -23,6 +25,7 @@ val checkAll = tasks.register("checkAll") {
 
     dependsOn(tasks.findByName("dependencyUpdates"))
     dependsOn(tasks.findByName("buildHealth"))
+    dependsOn(tasks.findByName("graphModules"))
 }
 
 subprojects {
@@ -66,4 +69,17 @@ tasks.withType<DependencyUpdatesTask> {
 
     outputFormatter="json,html"
     outputDir = layout.buildDirectory.dir("reports/dependency-updates").get().asFile.path
+}
+
+
+// Configure Module dependency graph plugin to output to build/reports
+tasks.named("graphModules") {
+    project.extraProperties.let { properties ->
+        properties.set("autoOpenGraph", "false")
+
+        val moduleDependenciesReportsDir = project.layout.buildDirectory.dir("reports/module-dependencies").get()
+        moduleDependenciesReportsDir.asFile.mkdirs()
+        properties.set("dotFilePath", moduleDependenciesReportsDir.file("dependency-graph.dot"))
+        properties.set("graphOutputFilePath", moduleDependenciesReportsDir.file("dependency-graph.png"))
+    }
 }
