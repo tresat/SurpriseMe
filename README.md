@@ -12,6 +12,13 @@ This will automatically run tests which require internet access if it is availab
 
 TBD
 
+## Testing
+
+To run unit tests for only the modules that changed (and dependent modules) during the last commit using the [affected-module-detector](https://github.com/dropbox/AffectedModuleDetector) plugin:
+```shell
+    ./gradlew runAffectedUnitTests --no-configuration-cache
+```
+
 ## Maintenance Tasks
 
 All reports will generate in the `build/reports` directory.
@@ -26,7 +33,7 @@ To see a report of dependencies that are potentially misconfigured using the [gr
     ./gradlew buildHealth --no-configuration-cache
 ```
 
-To see a report of module dependencies (that is incomplete due to lacking KMP SourceSets) using the [module-dependency-graph-plugin](https://github.com/savvasdalkitsis/module-dependency-graph):
+To see a report of module dependencies (that is incomplete due to lacking KMP SourceSets) using the [module-dependency-graph](https://github.com/savvasdalkitsis/module-dependency-graph) plugin:
 ```shell
     ./gradlew graphModules --no-configuration-cache
 ```

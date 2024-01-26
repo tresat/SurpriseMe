@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.kotlinCocoapods).apply(false)
 
     // Actual top-level plugins
+    alias(libs.plugins.affectedModuleDetector)
     alias(libs.plugins.versions)
     alias(libs.plugins.dependencyAnalysis)
     alias(libs.plugins.moduleDependencyGraph)

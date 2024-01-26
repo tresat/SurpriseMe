@@ -19,6 +19,7 @@ log4j = "2.22.1"
 nativeCoroutines = "1.0.0-ALPHA-23"
 
 # Plugins
+affected-module-detector = "0.2.2"
 dependency-analysis = "1.29.0"
 module-dependency-graph = "0.10"
 versions = "0.51.0"
@@ -51,6 +52,7 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 
 [plugins]
+affectedModuleDetector = { id = "com.dropbox.affectedmoduledetector", version.ref = "affected-module-detector" }
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependency-analysis" }
