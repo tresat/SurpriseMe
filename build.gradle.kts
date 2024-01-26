@@ -11,6 +11,7 @@ plugins {
 
     // Actual top-level plugins
     alias(libs.plugins.versions)
+    alias(libs.plugins.dependencyAnalysis)
 }
 
 description = """Creates fuzzy alerts that are a welcome surprise!"""
@@ -21,6 +22,7 @@ val checkAll = tasks.register("checkAll") {
     description = "Runs all checks and maintenance reports"
 
     dependsOn(tasks.findByName("dependencyUpdates"))
+    dependsOn(tasks.findByName("buildHealth"))
 }
 
 subprojects {
