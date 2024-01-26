@@ -8,8 +8,8 @@ dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
 
-    implementation(platform("com.tomtresansky.surpriseme.buildlogic:common-platform"))
-    implementation(project(":common"))
+    implementation(platform(projects.commonPlatform))
+    implementation(projects.common)
     implementation(libs.commons.text)
 }
 
