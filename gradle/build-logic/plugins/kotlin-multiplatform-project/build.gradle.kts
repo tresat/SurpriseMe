@@ -7,6 +7,7 @@ group = "com.tomtresansky.surpriseme.buildlogic"
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.kt.lint)
 
     implementation(platform(projects.commonPlatform))
     implementation(projects.common)

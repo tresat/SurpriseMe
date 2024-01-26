@@ -12,22 +12,25 @@ plugins {
 
     // Actual top-level plugins
     alias(libs.plugins.affectedModuleDetector)
-    alias(libs.plugins.versions)
     alias(libs.plugins.dependencyAnalysis)
+    alias(libs.plugins.ktLint)
     alias(libs.plugins.moduleDependencyGraph)
+    alias(libs.plugins.versions)
 }
 
 description = """Creates fuzzy alerts that are a welcome surprise!"""
 defaultTasks("build")
 
-val checkAll = tasks.register("checkAll") {
-    group = LifecycleBasePlugin.VERIFICATION_GROUP
-    description = "Runs all checks and maintenance reports"
+val checkAll =
+    tasks.register("checkAll") {
+        group = LifecycleBasePlugin.VERIFICATION_GROUP
+        description = "Runs all checks and maintenance reports"
 
-    dependsOn(tasks.findByName("dependencyUpdates"))
-    dependsOn(tasks.findByName("buildHealth"))
-    dependsOn(tasks.findByName("graphModules"))
-}
+        dependsOn(tasks.findByName("dependencyUpdates"))
+        dependsOn(tasks.findByName("buildHealth"))
+        dependsOn(tasks.findByName("graphModules"))
+        dependsOn(tasks.named("ktlintCheck"))
+    }
 
 subprojects {
     checkAll.configure {
@@ -49,7 +52,7 @@ fun isNonStable(version: String): Boolean {
     val basicRegex = "[0-9,.v-]+(-r)?"
     val groovyVersionsRegex = "$basicRegex-jre"
     val guavaJreVersionsRegex = "$basicRegex-groovy-$basicRegex"
-    val regex = "^(${basicRegex})|(${groovyVersionsRegex})|(${guavaJreVersionsRegex})".toRegex()
+    val regex = "^($basicRegex)|($groovyVersionsRegex)|($guavaJreVersionsRegex)".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
 }
@@ -62,16 +65,15 @@ tasks.withType<DependencyUpdatesTask> {
 
     filterConfigurations = Spec<Configuration> { false }
 
-    revision="release"
+    revision = "release"
 
-    gradleReleaseChannel="release-candidate"
+    gradleReleaseChannel = "release-candidate"
     checkConstraints = true
     checkBuildEnvironmentConstraints = true
 
-    outputFormatter="json,html"
+    outputFormatter = "json,html"
     outputDir = layout.buildDirectory.dir("reports/dependency-updates").get().asFile.path
 }
-
 
 // Configure Module dependency graph plugin to output to build/reports
 tasks.named("graphModules") {

@@ -10,6 +10,7 @@ import org.apache.commons.text.WordUtils
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.cocoapods.CocoapodsExtension
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
 abstract class KotlinMultiplatformProjectPlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -18,6 +19,7 @@ abstract class KotlinMultiplatformProjectPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.multiplatform")
                 apply("org.jetbrains.kotlin.native.cocoapods")
                 apply("com.android.library")
+                apply("org.jlleitschuh.gradle.ktlint")
             }
 
             val jvmVersion = libs().findVersion("jvmVersion").get().toString()
@@ -66,6 +68,17 @@ abstract class KotlinMultiplatformProjectPlugin : Plugin<Project> {
                     framework {
                         baseName = project.name
                         isStatic = true
+                    }
+                }
+            }
+
+            extensions.configure<KtlintExtension> {
+                debug.set(true)
+                verbose.set(true)
+
+                filter {
+                    exclude {
+                        it.file.path.contains("generated")
                     }
                 }
             }
