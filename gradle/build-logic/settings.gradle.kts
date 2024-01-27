@@ -3,6 +3,10 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
+
+        maven {
+            url = uri("https://plugins.gradle.org/m2/")
+        }
     }
 }
 
@@ -31,6 +35,7 @@ includePlatformProject("common-platform")
 includePlatformProject("kotlin-platform")
 includePlatformProject("jpa-platform")
 
+includePluginProject("base-convention")
 includePluginProject("kotlin-project")
 includePluginProject("jpa-project")
 includePluginProject("kotlin-multiplatform-project")

@@ -5,12 +5,13 @@ plugins {
 group = "com.tomtresansky.surpriseme.buildlogic"
 
 dependencies {
+    implementation(platform(projects.kotlinPlatform))
+
+    implementation(projects.baseConvention)
+
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
-    compileOnly(libs.kt.lint)
 
-    implementation(platform(projects.commonPlatform))
-    implementation(projects.common)
     implementation(libs.commons.text)
 }
 

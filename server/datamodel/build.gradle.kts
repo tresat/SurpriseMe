@@ -1,7 +1,3 @@
 plugins {
-    kotlin("jvm")
-}
-
-dependencies {
-    implementation(libs.jakarta.persistence.api)
+    alias(libs.plugins.surpriseMe.jpaProject)
 }

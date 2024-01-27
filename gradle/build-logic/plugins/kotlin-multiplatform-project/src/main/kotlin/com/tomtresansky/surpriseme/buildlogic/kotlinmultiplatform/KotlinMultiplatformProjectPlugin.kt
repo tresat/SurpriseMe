@@ -1,19 +1,18 @@
 package com.tomtresansky.surpriseme.buildlogic.kotlinmultiplatform
 
 import com.android.build.gradle.LibraryExtension
+import com.tomtresansky.surpriseme.buildlogic.baseconvention.AbstractConventionPlugin
 import com.tomtresansky.surpriseme.buildlogic.common.libs
+import org.apache.commons.text.WordUtils
 import org.gradle.api.JavaVersion
-import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
-import org.apache.commons.text.WordUtils
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.plugin.cocoapods.CocoapodsExtension
-import org.jlleitschuh.gradle.ktlint.KtlintExtension
 
-abstract class KotlinMultiplatformProjectPlugin : Plugin<Project> {
-    override fun apply(project: Project) {
+abstract class KotlinMultiplatformProjectPlugin : AbstractConventionPlugin() {
+    override fun apply(project : Project) {
         with(project) {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.multiplatform")
@@ -75,16 +74,7 @@ abstract class KotlinMultiplatformProjectPlugin : Plugin<Project> {
                 }
             }
 
-            extensions.configure<KtlintExtension> {
-                debug.set(true)
-                verbose.set(true)
-
-                filter {
-                    exclude {
-                        it.file.path.contains("generated")
-                    }
-                }
-            }
+            configureKtLint()
         }
     }
 }

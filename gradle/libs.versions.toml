@@ -37,6 +37,7 @@ compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview"
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
 jakarta-persistence-api = { module = "jakarta.persistence:jakarta.persistence-api", version.ref = "jakarta-persistence" }
+kotlin-noarg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
@@ -61,6 +62,7 @@ affectedModuleDetector = { id = "com.dropbox.affectedmoduledetector", version.re
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 dependencyAnalysis = { id = "com.autonomousapps.dependency-analysis", version.ref = "dependency-analysis" }
+kotlinJpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
@@ -72,5 +74,6 @@ nativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = 
 versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 
 # Convention Plugins
+surpriseMe-kotlinProject = { id = "com.tomtresansky.surpriseme.kotlin-project", version = "unspecified" }
 surpriseMe-jpaProject = { id = "com.tomtresansky.surpriseme.jpa-project", version = "unspecified" }
 surpriseMe-kotlinMultiplatformProject = { id = "com.tomtresansky.surpriseme.kotlin-multiplatform-project", version = "unspecified" }
