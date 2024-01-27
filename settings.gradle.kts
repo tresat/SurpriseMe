@@ -22,8 +22,10 @@ dependencyResolutionManagement {
 includeBuild("gradle/build-logic")
 
 rootProject.name = "SurpriseMe"
+
 include(":androidApp")
 include(":shared")
+
 includeServerProject("datamodel")
 
 fun includeServerProject(name: String) = includeProject(name, file("server"))
