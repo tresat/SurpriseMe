@@ -1,5 +1,6 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.plugin.extraProperties
+import org.jlleitschuh.gradle.ktlint.tasks.GenerateReportsTask
 
 plugins {
     // These plugins must be defined at root project, to get the same version throughout and
@@ -29,12 +30,12 @@ val checkAll =
         dependsOn(tasks.findByName("dependencyUpdates"))
         dependsOn(tasks.findByName("buildHealth"))
         dependsOn(tasks.findByName("graphModules"))
-        dependsOn(tasks.named("ktlintCheck"))
     }
 
 subprojects {
     checkAll.configure {
         dependsOn(tasks.withType(Test::class))
+        dependsOn(tasks.withType(GenerateReportsTask::class))
     }
 }
 
