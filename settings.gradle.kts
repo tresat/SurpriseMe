@@ -24,4 +24,11 @@ includeBuild("gradle/build-logic")
 rootProject.name = "SurpriseMe"
 include(":androidApp")
 include(":shared")
-include(":server:datamodel")
+includeServerProject("datamodel")
+
+fun includeServerProject(name: String) = includeProject(name, file("server"))
+
+fun includeProject(name: String, subDir: File) {
+    include(name)
+    project(":$name").projectDir = File(subDir, name)
+}
