@@ -1,4 +1,4 @@
-package com.tomtresansky.surpriseme.datamodel
+package com.tomtresansy.surpriseme.datamodel
 
 class Datamodel {
     companion object {

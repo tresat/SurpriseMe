@@ -20,9 +20,10 @@ kotlin {
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
+        jvmMain.dependencies {
+            implementation(libs.ktor.client.java)
+        }
         commonMain.dependencies {
-            implementation(projects.datamodel)
-
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.coroutines)
             implementation(libs.ktor.client.core)

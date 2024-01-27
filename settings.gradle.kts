@@ -24,4 +24,4 @@ includeBuild("gradle/build-logic")
 rootProject.name = "SurpriseMe"
 include(":androidApp")
 include(":shared")
-include(":datamodel")
+include(":server:datamodel")

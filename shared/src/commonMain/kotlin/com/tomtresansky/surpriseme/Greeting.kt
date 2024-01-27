@@ -1,7 +1,6 @@
 package com.tomtresansky.surpriseme
 
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
-import com.tomtresansky.surpriseme.datamodel.Datamodel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -16,8 +15,6 @@ class Greeting {
     fun greet(): Flow<String> =
         flow {
             emit(if (Random.nextBoolean()) "Hi!" else "Hello!")
-            delay(1.seconds)
-            emit(Datamodel.testMsg())
             delay(1.seconds)
             emit(platform.name)
             delay(1.seconds)
